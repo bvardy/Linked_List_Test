@@ -21,31 +21,27 @@ class LinkedLists:
 
     def __iter__(self):
         node = self.head
-        while node is not None:
-            yield node # maybe add .data
+        while node:
+            yield node.data
             node = node.next
-
 
     def __repr__(self):
         node = self.head
         nodes = []
-        while node is not None:
+        while node:
             nodes.append(node.data)
             node = node.next
         nodes.append("None")
-        return " -> ".join(nodes)
-
-llst = LinkedLists(["1", "2", "5", "10"])
-llst2 = LinkedLists(["1", "3", "7", "9"])
+        return " -> ".join(str(node) for node in nodes)
 
 def mergeLinkedLists(arr1, arr2):
     arr1_list = []
     for i in arr1:
-        arr1_list.append(i.data)
+        arr1_list.append(i)
 
     arr2_list = []
     for j in arr2:
-        arr2_list.append(j.data)
+        arr2_list.append(j)
 
     arr3_list = []
     i = 0
@@ -69,4 +65,13 @@ def mergeLinkedLists(arr1, arr2):
     new_linkedlist = LinkedLists(arr3_list)
     return new_linkedlist
 
+# llst = LinkedLists(["1", "2", "5", "10"])
+# llst2 = LinkedLists(["1", "3", "7", "9"])
+
+llst = LinkedLists([1, 2, 5, 10])
+llst2 = LinkedLists([1, 3, 7, 9])
+
+print(llst)
+print(llst2)
 print(mergeLinkedLists(llst, llst2))
+
